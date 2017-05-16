@@ -1,0 +1,43 @@
+<?php 
+// load the google recaptcha API
+$GLOBALS['TL_JAVASCRIPT'][] = 'https://www.google.com/recaptcha/api.js';
+?>
+
+<?php $this->extend('form_row'); ?>
+
+<?php $this->block('label'); ?>
+  <?php if ($this->label): ?>
+    <label for="ctrl_<?= $this->id ?>"<?php if ($this->class): ?> class="<?= $this->class ?>"<?php endif; ?>>
+      <span class="invisible"><?= $this->mandatoryField ?> </span><?= $this->label ?><span class="mandatory">*</span>
+    </label>
+  <?php endif; ?>
+<?php $this->endblock(); ?>
+
+<?php $this->block('field'); ?>
+  <?php if ($this->hasErrors()): ?>
+    <p class="error"><?= $this->getErrorAsString() ?></p>
+  <?php endif; ?>
+  
+  <?php if($this->hidden): ?>
+  <input type="submit" class="g-recaptcha submit" data-sitekey="<?= $this->sitekey; ?>" data-callback="onSubmit_<?= $this->id; ?>" value="<?= $this->slabel; ?>"></input>
+  <script type='text/javascript'>
+  /* <![CDATA[ */
+  
+	function onSubmit_<?= $this->id; ?>(response)
+	{
+		if(response)
+		{
+			document.getElementById('<?= $this->formID; ?>').submit();
+		}
+	}
+  
+	  
+  /* ]]> */
+  </script>
+  
+  
+  <?php else: ?>
+  <div id="ctrl_google_recaptcha_<?= $this->id ?>" class="g-recaptcha<?php if ($this->class) echo ' ' . $this->class; ?>" data-sitekey="<?= $this->sitekey; ?>"></div>
+  <?php endif; ?>
+
+<?php $this->endblock(); ?>

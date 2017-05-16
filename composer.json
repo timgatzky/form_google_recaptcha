@@ -1,0 +1,36 @@
+{
+	"name":"timgatzky/metamodelss_notelistmanager",
+	"description":"Google recaptcha for Contaos formular generator",
+	"keywords":["contao","google","recaptcha"],
+	"type":"contao-module",
+	"homepage":"https://github.com/timgatzky/form_google_recaptcha",
+	"license":"purchase",
+	"authors":
+	[
+		{
+			"name":"Tim Gatzky",
+			"homepage":"http://www.tim-gatzky.de",
+			"role":"Interaction-Designer,Developer"
+		}
+	],
+	"support":
+	{
+		"issues":"https://github.com/timgatzky/form_google_recaptcha/issues",
+		"source":"https://github.com/timgatzky/form_google_recaptcha"
+	},
+	"require":
+	{
+		"php":">=5.6",
+		"contao/core":">=3.5",
+	},
+	"extra":
+	{
+		"contao":
+		{
+			"sources":
+			{
+				"":"system/modules/form_google_recaptcha"
+			}
+		}
+	}
+}
