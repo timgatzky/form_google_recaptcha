@@ -12,11 +12,14 @@
  * @license		http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
+use Contao\Input;
+use Contao\Widget;
+
 /**
  * Class file
  * FormGoogleRecaptcha
  */
-class FormGoogleRecaptcha extends \Widget
+class FormGoogleRecaptcha extends Widget
 {
 	/**
 	 * Template
@@ -43,23 +46,6 @@ class FormGoogleRecaptcha extends \Widget
 		$this->sitekey = trim($this->placeholder);
 		$this->secretkey = trim($this->text);
 		$this->class = $this->strPrefix.' '.$this->class;
-		if($this->type == 'google_recaptcha_hidden')
-		{
-			$this->hidden = true;
-			
-			$objForm = \FormModel::findByPk($this->pid);
-			$this->formID = 'f'.$objForm->id;
-			
-			if($objForm->attributes)
-			{
-				$arrCssID = deserialize($objForm->attributes);
-				if(strlen($arrCssID[0]) > 1)
-				{
-					$this->formID = $arrCssID[0];
-				}
-			}
-			
-		}
 	}
 
 
@@ -71,10 +57,10 @@ class FormGoogleRecaptcha extends \Widget
 		$arrParams = array
 		(
 			'secret'	=> $this->secretkey,
-			'response' 	=> \Input::post('g-recaptcha-response'),
+			'response' 	=> Input::post('g-recaptcha-response'),
 		);
 		
-		$strOutput = file_get_contents('https://www.google.com/recaptcha/api/siteverify?'.http_build_query($arrParams)); 
+		$strOutput = \file_get_contents('https://www.google.com/recaptcha/api/siteverify?'.http_build_query($arrParams)); 
 		
 		if(empty($strOutput))
 		{
@@ -82,16 +68,14 @@ class FormGoogleRecaptcha extends \Widget
 			$this->addError($GLOBALS['TL_LANG']['ERR']['GOOGLE_RECAPTCHA']['couldNotBeVarified']);
 			return null;
 		}
-		
 		$arrResponse = json_decode($strOutput,true);
 		
 		if((boolean)$arrResponse['success'] === false)
 		{
 			$this->class = 'error';
 			$this->addError($GLOBALS['TL_LANG']['ERR']['GOOGLE_RECAPTCHA']['noSuccess']);
-			
 			// add google error codes
-			if(is_array($arrResponse['error-codes']) && count($arrResponse['error-codes']) > 0)
+			if( isset($arrResponse['error-codes']) && is_array($arrResponse['error-codes']) )
 			{
 				foreach($arrResponse['error-codes'] as $error)
 				{

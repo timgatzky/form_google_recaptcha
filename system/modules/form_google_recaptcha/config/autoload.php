@@ -2,27 +2,36 @@
 
 /**
  * Contao Open Source CMS
- *
- * Copyright (c) 2005-2017 Leo Feyer
- *
- * @license LGPL-3.0+
+ * 
+ * Copyright (C) Leo Feyer
+ * 
+ * @copyright	Tim Gatzky 2025
+ * @author		Tim Gatzky <info@tim-gatzky.de>
+ * @package		form_google_recaptcha
+ * @link		http://contao.org
+ * @license		http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
+
+ // path relative from composer directory
+$path = \Contao\System::getContainer()->getParameter('kernel.project_dir').'/vendor/composer/../../system/modules/form_google_recaptcha';
 
 
 /**
  * Register the classes
  */
-ClassLoader::addClasses(array
+$classMap = array
 (
-	'FormGoogleRecaptcha' 		=> 'system/modules/form_google_recaptcha/FormGoogleRecaptcha.php',
-	'GoogleRecaptcha'        	=> 'system/modules/form_google_recaptcha/GoogleRecaptcha.php',
-));
+	'FormGoogleRecaptcha' 		=> $path.'/classes/FormGoogleRecaptcha.php'
+);
+$loader = new \Composer\Autoload\ClassLoader();
+$loader->addClassMap($classMap);
+$loader->register();
 
 
 /**
  * Register the templates
  */
-TemplateLoader::addFiles(array
+\Contao\TemplateLoader::addFiles(array
 (
 	'form_google_recaptcha' => 'system/modules/form_google_recaptcha/templates',
 ));

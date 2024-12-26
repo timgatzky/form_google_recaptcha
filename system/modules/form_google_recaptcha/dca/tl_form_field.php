@@ -21,8 +21,7 @@ $GLOBALS['TL_DCA']['tl_form_field']['config']['onload_callback'][] = array('tl_f
 /**
  * Palettes
  */
-$GLOBALS['TL_DCA']['tl_form_field']['palettes']['google_recaptcha'] = '{type_legend},type,label;{fconfig_legend},placeholder,text;{expert_legend:hide},class;{template_legend:hide},customTpl;';
-$GLOBALS['TL_DCA']['tl_form_field']['palettes']['google_recaptcha_hidden'] = '{type_legend},type,label;{fconfig_legend},placeholder,text,slabel;{expert_legend:hide},class;{template_legend:hide},customTpl;';
+$GLOBALS['TL_DCA']['tl_form_field']['palettes']['google_recaptcha'] = '{type_legend},type,label,slabel;{fconfig_legend},placeholder,text;{expert_legend:hide},class;{template_legend:hide},customTpl;';
 
 
 /**
@@ -39,10 +38,10 @@ class tl_form_field_form_google_recaptcha
 	{
 		if($objDC->activeRecord === null)
 		{
-			$objDC->activeRecord = \Database::getInstance()->prepare("SELECT * FROM ".$objDC->table." WHERE id=?")->limit(1)->execute($objDC->id);
+			$objDC->activeRecord = \Contao\Database::getInstance()->prepare("SELECT * FROM ".$objDC->table." WHERE id=?")->limit(1)->execute($objDC->id);
 		}
 		
-		if( !in_array( $objDC->activeRecord->type, array('google_recaptcha','google_recaptcha_hidden') ) )
+		if( !in_array( $objDC->activeRecord->type, array('google_recaptcha') ) )
 		{
 			return;
 		}
