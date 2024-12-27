@@ -14,8 +14,6 @@
  */
  
 $GLOBALS['TL_LANG']['tl_form_field']['google_recaptcha_placeholder'][0] = 'Websiteschlüssel';
-$GLOBALS['TL_LANG']['tl_form_field']['google_recaptcha_placeholder'][1] = 'Verwenden Sie diesen Schlüssel im HTML-Code für die Nutzer Ihrer Website. Schlüssel anfordern: <a href="https://www.google.com/recaptcha">https://www.google.com/recaptcha</a>';
-
+$GLOBALS['TL_LANG']['tl_form_field']['google_recaptcha_placeholder'][1] = 'Verwenden Sie diesen Schlüssel im HTML-Code für die Nutzer Ihrer Website. Schlüssel anfordern: <a target="_blank" href="https://www.google.com/recaptcha">https://www.google.com/recaptcha</a>';
 $GLOBALS['TL_LANG']['tl_form_field']['google_recaptcha_slabel'][0] = 'Geheimer Schlüssel';
-$GLOBALS['TL_LANG']['tl_form_field']['google_recaptcha_slabel'][1] = 'Verwenden Sie diesen Schlüssel für die Kommunikation zwischen Ihrer Website und Google. Halten Sie diesen Schlüssel geheim. Schlüssel anfordern: <a href="https://www.google.com/recaptcha">https://www.google.com/recaptcha</a>';
-
+$GLOBALS['TL_LANG']['tl_form_field']['google_recaptcha_slabel'][1] = 'Verwenden Sie diesen Schlüssel für die Kommunikation zwischen Ihrer Website und Google. Halten Sie diesen Schlüssel geheim. Schlüssel anfordern: <a target="_blank" href="https://www.google.com/recaptcha">https://www.google.com/recaptcha</a>';

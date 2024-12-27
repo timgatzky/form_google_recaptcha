@@ -12,6 +12,6 @@
  * permanent text corrections which are update-safe. 
  */
 
-$GLOBALS['TL_LANG']['MOD']['form_google_recaptcha'] 		= 'Google Recaptcha Formularfeld';
-$GLOBALS['TL_LANG']['FFL']['google_recaptcha'][0] 			= 'Google reCAPTCHA';
-$GLOBALS['TL_LANG']['FFL']['google_recaptcha'][1] 			= 'Nutzer mit dem Kästchen "Ich bin kein Roboter" validieren.';
+ $GLOBALS['TL_LANG']['MOD']['form_google_recaptcha'] = 'Google Recaptcha form field';
+ $GLOBALS['TL_LANG']['FFL']['google_recaptcha'][0] = 'Google reCAPTCHA';
+ $GLOBALS['TL_LANG']['FFL']['google_recaptcha'][1] = 'Validate users with the "I am not a robot" checkbox.';
