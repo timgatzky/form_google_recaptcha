@@ -39,7 +39,6 @@ jQuery(document).on("Eclipse.user_privacy",function(event,params)
   <p class="error"><?= $this->getErrorAsString() ?></p>
 <?php endif; ?>
 
-<?php if (in_array('pct_privacy_manager', $bundles)): ?>
   <!-- indexer::stop -->
   <p id='privacy_form_info_<?= $this->id; ?>' class="privacy hidden">{{iflng::de}}Das Laden von Google Recaptcha wurde nicht erlaubt. Bitte ändern Sie die <a class="privacy_optout_click">Datenschutz-Einstellungen</a>{{iflng}}{{iflng::en}}Google Recaptcha has been restricted due to <a class="privacy_optout_click">privacy settings</a>{{iflng}}</p>
   <!-- indexer::continue -->
@@ -53,16 +52,17 @@ jQuery(document).on("Eclipse.user_privacy",function(event,params)
       {
         jQuery('#privacy_form_info_<?= $this->id; ?>').removeClass('hidden');
       }
-      jQuery(document).on("Eclipse.user_privacy", function(event, params) 
-      {
-        if (params.level.indexOf(2) >= 0) {
-          jQuery('#privacy_form_info_<?= $this->id; ?>').removeClass('hidden');
-        }
-      });
     });
+    jQuery(document).on('Privacy.changed',function(event,params)
+		{
+			if( PrivacyManager.hasAccess(2) )
+			{
+        jQuery('#privacy_form_info_<?= $this->id; ?>').fadeOut();
+			}
+		});
   </script>
   <!-- SEO-SCRIPT-STOP -->
-<?php endif; ?>
+
 <button type="submit" class="g-recaptcha submit" data-sitekey="<?= $this->sitekey; ?>" data-callback="onSubmit_<?= $this->id; ?>" data-action="submit"><?= $this->slabel; ?></button>
 <script>
   function onSubmit_<?= $this->id; ?>(token) 

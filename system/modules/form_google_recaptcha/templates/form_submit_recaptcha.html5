@@ -1,0 +1,19 @@
+<?php 
+// recaptcha site key
+$sitekey = '';
+?>
+<?php $this->extend('form_row'); ?>
+
+<?php $this->block('field'); ?>
+  <?php if ($this->src): ?>
+    <input data-sitekey="<?= $sitekey; ?>" data-callback="onSubmit_<?= $this->id; ?>" data-action="submit" type="image" src="<?= $this->src ?>" id="ctrl_<?= $this->id ?>" class="g-recaptcha submit<?php if ($this->class): ?> <?= $this->class ?><?php endif; ?>" title="<?= Contao\StringUtil::specialchars($this->slabel) ?>" alt="<?= Contao\StringUtil::specialchars($this->slabel) ?>"<?= $this->getAttributes() ?>>
+  <?php else: ?>
+    <button data-sitekey="<?= $sitekey; ?>" data-callback="onSubmit_<?= $this->id; ?>" data-action="submit" type="submit" id="ctrl_<?= $this->id ?>" class="g-recaptcha submit<?php if ($this->class): ?> <?= $this->class ?><?php endif; ?>"<?= $this->getAttributes() ?>><?= $this->slabel ?></button>
+  <?php endif; ?>
+  <script>
+  function onSubmit_<?= $this->id; ?>(token) 
+  {
+    jQuery('button[data-sitekey="<?= $sitekey; ?>"]').parents('form').submit();
+  }
+</script>
+<?php $this->endblock(); ?>
