@@ -52,13 +52,14 @@ jQuery(document).on("Eclipse.user_privacy",function(event,params)
       {
         jQuery('#privacy_form_info_<?= $this->id; ?>').removeClass('hidden');
       }
-      jQuery(document).on("Eclipse.user_privacy", function(event, params) 
-      {
-        if (params.level.indexOf(2) >= 0) {
-          jQuery('#privacy_form_info_<?= $this->id; ?>').removeClass('hidden');
-        }
-      });
     });
+    jQuery(document).on('Privacy.changed',function(event,params)
+		{
+			if( PrivacyManager.hasAccess(2) )
+			{
+        jQuery('#privacy_form_info_<?= $this->id; ?>').fadeOut();
+			}
+		});
   </script>
   <!-- SEO-SCRIPT-STOP -->
 
