@@ -34,4 +34,6 @@ $loader->register();
 \Contao\TemplateLoader::addFiles(array
 (
 	'form_google_recaptcha' => 'system/modules/form_google_recaptcha/templates',
+	'form_google_recaptcha_optin' => 'system/modules/form_google_recaptcha/templates',
+	'form_submit_recaptcha' => 'system/modules/form_google_recaptcha/templates',
 ));
