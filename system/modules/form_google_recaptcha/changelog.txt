@@ -2,5 +2,6 @@
 Update: Rebuild for Contao 4.13, 5.3 LTS compatibility (#2)
 Update: Use Google Recaptcha V3 (#2)
 Update: Provide PCT Privacy Manager secured template (#3)
+Update: form_submit_recaptcha for regular submit form fields (#7)
 
 ### 1.0.0
