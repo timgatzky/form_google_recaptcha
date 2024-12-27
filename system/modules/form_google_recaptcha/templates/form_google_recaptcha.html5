@@ -17,27 +17,11 @@ $GLOBALS['TL_JAVASCRIPT'][] = 'https://www.google.com/recaptcha/api.js';
   <?php if ($this->hasErrors()): ?>
     <p class="error"><?= $this->getErrorAsString() ?></p>
   <?php endif; ?>
-  
-  <?php if($this->hidden): ?>
-  <input type="submit" class="g-recaptcha submit" data-sitekey="<?= $this->sitekey; ?>" data-callback="onSubmit_<?= $this->id; ?>" value="<?= $this->slabel; ?>"></input>
-  <script type='text/javascript'>
-  /* <![CDATA[ */
-  
-	function onSubmit_<?= $this->id; ?>(response)
+  <button type="submit" class="g-recaptcha submit" data-sitekey="<?= $this->sitekey; ?>" data-callback="onSubmit_<?= $this->id; ?>" data-action="submit"><?= $this->slabel; ?></button>
+  <script>
+  function onSubmit_<?= $this->id; ?>(token)
 	{
-		if(response)
-		{
-			document.getElementById('<?= $this->formID; ?>').submit();
-		}
-	}
-  
-	  
-  /* ]]> */
-  </script>
-  
-  
-  <?php else: ?>
-  <div id="ctrl_google_recaptcha_<?= $this->id ?>" class="g-recaptcha<?php if ($this->class) echo ' ' . $this->class; ?>" data-sitekey="<?= $this->sitekey; ?>"></div>
-  <?php endif; ?>
-
+    jQuery('button[data-sitekey="<?= $this->sitekey; ?>"]').parents('form').submit();
+  }
+</script>
 <?php $this->endblock(); ?>

@@ -1,5 +1,5 @@
 {
-	"name":"timgatzky/metamodelss_notelistmanager",
+	"name":"timgatzky/form_google_recaptcha",
 	"description":"Google recaptcha for Contaos formular generator",
 	"keywords":["contao","google","recaptcha"],
 	"type":"contao-module",
@@ -20,16 +20,21 @@
 	},
 	"require":
 	{
-		"php":">=5.6",
-		"contao/core":">=3.5",
+		"php":">=7.4",
+		"contao/core-bundle":"^4.13.30 || ^5.3.0",
+        "contao-community-alliance/composer-plugin":"~2.4 || ~3.0"
 	},
+	"replace":
+	{
+		"contao-legacy/form_google_recaptcha":"self.version"
+	},	
 	"extra":
 	{
 		"contao":
 		{
 			"sources":
 			{
-				"":"system/modules/form_google_recaptcha"
+				"system/modules/form_google_recaptcha":"system/modules/form_google_recaptcha"
 			}
 		}
 	}
