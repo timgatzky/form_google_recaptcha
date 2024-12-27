@@ -4,7 +4,7 @@
 	"keywords":["contao","google","recaptcha"],
 	"type":"contao-module",
 	"homepage":"https://github.com/timgatzky/form_google_recaptcha",
-	"license":"purchase",
+	"license": "LGPL-3.0-or-later",
 	"authors":
 	[
 		{
