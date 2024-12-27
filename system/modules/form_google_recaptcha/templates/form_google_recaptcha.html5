@@ -17,7 +17,7 @@ $GLOBALS['TL_JAVASCRIPT'][] = 'https://www.google.com/recaptcha/api.js';
   <?php if ($this->hasErrors()): ?>
     <p class="error"><?= $this->getErrorAsString() ?></p>
   <?php endif; ?>
-  <button class="g-recaptcha submit" data-sitekey="<?= $this->sitekey; ?>" data-callback="onSubmit_<?= $this->id; ?>" data-action="submit"><?= $this->slabel; ?></button>
+  <button type="submit" class="g-recaptcha submit" data-sitekey="<?= $this->sitekey; ?>" data-callback="onSubmit_<?= $this->id; ?>" data-action="submit"><?= $this->slabel; ?></button>
   <script>
   function onSubmit_<?= $this->id; ?>(token)
 	{
